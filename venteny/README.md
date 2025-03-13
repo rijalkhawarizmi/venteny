@@ -1,16 +1,24 @@
 # venteny
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+EMAIL LOGIN => eve.holt@reqres.in
+PASSWORD => cityslicka
 
-A few resources to get you started if this is your first Flutter project:
+Metode yang digunakan yaitu DOMAIN DRIVE DESIGN
+arsitekturnya seperti berikut
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+folder DATA
+Models -> Representasi data yang bisa dikonversi dari/ke JSON.
+Data Sources -> Menghubungkan ke API atau database.
+Repositories -> Implementasi dari abstraksi di domain 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+FOLDER DOMAIN
+Entities -> Objek utama dalam domain bisnis.
+Repositories -> Abstraksi untuk pengambilan data.
+Use Cases -> Logika bisnis spesifik.
+
+FOLDER PRESENTATION
+Pages -> Halaman atau tampilan aplikasi.
+Widgets -> kumpulan widget.
+State management -> Bloc,provider dll.

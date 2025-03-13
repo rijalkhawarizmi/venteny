@@ -7,24 +7,67 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:venteny/core/utils/status_task.dart';
+import 'package:venteny/core/utils/validation.dart';
 
-import 'package:venteny/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+group("email test", (){
+ test("test form validation email",
+      () => {expect(Validation.validateEmail(""), "Email cannot be empty")});
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  test("test form validation email not valid",
+      () => {expect(Validation.validateEmail("rijal"), "email not valid")});
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test("test form validation email valid",
+      () => {expect(Validation.validateEmail("rijal@gmail.com"), null)});
+});
+
+  
+  group("password test", (){
+    test(
+      "test form validation password 8 characters",
+      () => {
+            expect(Validation.validatePassword(""), "Password cannot be empty")
+          });
+  test(
+      "test form validation password not 8 characters",
+      () => {
+            expect(Validation.validatePassword("1234567"),
+                "Password must 8 characters")
+          });
+
+  test("test form validation password 8 characters",
+      () => {expect(Validation.validatePassword("12345678"), null)});
   });
+
+
+
+  group("status test", (){
+    test(
+      "test status pending",
+      () => {
+            expect(StatusTask.statusTask(status: 1), "PENDING")
+          });
+
+      test(
+      "test status in progress",
+      () => {
+            expect(StatusTask.statusTask(status: 2), "IN PROGRESS")
+          });
+
+       test(
+      "test status in completed",
+      () => {
+            expect(StatusTask.statusTask(status: 3), "COMPLETED")
+          });
+  
+
+  
+  });
+
+
+
 }
